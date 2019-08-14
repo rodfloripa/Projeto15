@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<head>
+<h1>Previsão de palavras com a Regra de Bayes</h1>
+<p style="font-size:20px;">
+Neste projeto é calculada a probabilidade de uma palavra estar sendo digitada,
+exatamente o que o teclado virtual dos celulares faz.O corpus adotado constitui-se
+de textos extraídos da Folha de S. Paulo no período de 12/01/2010 a 12/02/2011, com
+1,1 milhão de palavras. Este corpus está disponível na biblioteca nltk. O projeto
+não utiliza nenhuma biblioteca de nlp, apenas o módulo nltk.corpus. 
+</p>
+</form>
+<p id="demo"></p>
+<style>
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 0px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+ul li{
+  display: inline;
+}
+
+.textbox{
+  text-align:center;
+}
+.textbox > input{
+  text-align:left;
+}
+
+ul li{
+  display: inline;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<div class ="textbox">
+    <input type="text" value=' ' id="text1" size="40" onkeyup="function1(event)">
+    <button id="CleanButt" onclick="clickEvent1();">Limpar</button>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+function function1(event) {
+    
+    
+    $.ajax({url: 'http://127.0.0.1:5000',data: JSON.stringify({"char":$('input:text').val(),"palavra_selec":0}),type: 'POST',contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
+             success:  function(result){
+      
+      function extractContent(s) {
+      var span = document.createElement('span');
+      span.innerHTML = s;
+      return span.textContent || span.innerText;
+                                 };
+      var a = extractContent(result)
+      var res = a.match(/\S+| [^"]+ /g);
+      var i;
+      if (res == null){
+      $('#Buttons').hide();
+      }
+      for (i = 0; i < res.length; i++) { 
+      res[i] = res[i].replace(/['"]+/g, '');
+       }
+      $('#Buttons').html("");
+      for (i=0;i<res.length;i++) { 
+      $('#Buttons').hide();
+      $('#Buttons').append($('<button id=test onclick="clickEvent2(this.id);" class="button">').text(res[i]));
+      var button = document.getElementById("test");
+      button.id= res[i];
+      $('#Buttons').fadeIn(300)};
+      
+      
+      
+                        }
+})}
+function clickEvent1(){
+      document.getElementById('text1').focus(); 
+      document.getElementById('text1').value = '';
+      $('#Buttons').hide();
+      $.ajax({url: 'http://127.0.0.1:5000',data: JSON.stringify({"char":'zerar',"palavra_selec":0}),
+            type: 'POST'})
+ };
+
+
+function clickEvent2(value1){
+      $.ajax({url: 'http://127.0.0.1:5000',data: JSON.stringify({"char":$('input:text').val(),"palavra_selec":1}),
+            type: 'POST'})
+      $('#Buttons').hide();
+      document.getElementById('text1').focus();
+      var str = document.getElementById('text1').value
+      var lastIndex = str.lastIndexOf(" ");
+      str = str.substring(0, lastIndex);
+      document.getElementById('text1').value = str+" "+value1; 
+ };
+
+
+</script>
+</head>
+<body>
+<div id="Buttons" class="flex-container">
+<!-- add LI here -->
+</div>
+</body>
+</html>
