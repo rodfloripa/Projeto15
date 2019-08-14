@@ -9,10 +9,15 @@ na biblioteca nltk. O projeto não utiliza nenhuma biblioteca de nlp, apenas o m
 nltk.corpus. 
 
 Arquivos:
+
 main2.py :                         programa principal
+
 nlp.py:                            biblioteca que criei,é utilizada pelo programa principal
+
 previsao.html:                     o programa final em html
+
 pre-processamento.py:              processa o corpus e gera as variáveis utilizadas no programa nlp.py
+
 p_dic_duas_palavras,s0
 s,pt,palavras_selec_1,
 palavras_selec_0,d_mai_ou_min,
