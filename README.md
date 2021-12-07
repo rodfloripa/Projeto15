@@ -8,7 +8,7 @@ de 12/01/2010 a 12/02/2011, com 1,1 milhão de palavras. Este corpus está dispo
 na biblioteca nltk. O projeto não utiliza nenhuma biblioteca de nlp, apenas o módulo
 nltk.corpus. 
 
-![Recompensa no tempo](https://github.com/rodfloripa/Projeto15/edit/master/pred_pal.png?raw=true)
+![Recompensa no tempo](https://github.com/rodfloripa/Projeto15/bloob/master/pred_pal.png?raw=true)
 
 
 Arquivos:
