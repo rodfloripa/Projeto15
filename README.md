@@ -1,13 +1,13 @@
 # Projeto15
 Previsão de Palavras
-
+<p align="justify">
 Neste projeto é calculada a probabilidade de uma palavra estar sendo digitada
 em um navegador de internet,exatamente o que o teclado virtual dos celulares faz.
 O corpus adotado constitui-se de textos extraídos da Folha de S. Paulo no período 
 de 12/01/2010 a 12/02/2011, com 1,1 milhão de palavras. Este corpus está disponível
 na biblioteca nltk. O projeto não utiliza nenhuma biblioteca de nlp, apenas o módulo
 nltk.corpus. 
-
+</p>
 ![Recompensa no tempo](https://github.com/rodfloripa/Projeto15/blob/master/prev_pal.png?raw=true)
 
 
